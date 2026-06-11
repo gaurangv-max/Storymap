@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Analytics } from '@vercel/analytics/react';
 import '@fontsource/public-sans/400.css';
 import '@fontsource/public-sans/600.css';
 import '@fontsource/public-sans/700.css';
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <App />
+      <Analytics />
     </ThemeProvider>
   </StrictMode>
 );
