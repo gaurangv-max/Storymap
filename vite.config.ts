@@ -5,16 +5,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    rollupOptions: {
-      output: {
-        // Split heavy vendor libraries out of the main app chunk so no single
-        // chunk trips the 500 kB warning and the browser can cache them apart
-        // from app code.
-        manualChunks: {
-          react: ['react', 'react-dom', 'react-router-dom'],
-          mui: ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
-        },
-      },
-    },
+    // Keep a single vendor bundle. Manually splitting React/MUI into separate
+    // chunks broke React's module init order in production (react-dom evaluating
+    // before react → blank screen). The bundle is small enough (~160 kB gzipped)
+    // that one chunk is fine; just raise the size-warning threshold above it.
+    chunkSizeWarningLimit: 1000,
   },
 });
