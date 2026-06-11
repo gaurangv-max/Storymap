@@ -1,0 +1,7 @@
+/* Global resets not covered by MUI CssBaseline.
+   Colors, fonts, scrollbars, and backgrounds come from the MUI theme. */
+html,
+body,
+#root {
+  height: 100%;
+}
